@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 40%;
+  --border: 214 32% 91%;
+  --primary: 203 89% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 221 39% 15%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 168 76% 42%;
+  --accent-foreground: 0 0% 100%;
+  --success: 142 71% 45%;
+}
+
+.dark {
+  --background: 222 47% 8%;
+  --foreground: 210 40% 96%;
+  --card: 222 40% 12%;
+  --muted: 221 31% 16%;
+  --muted-foreground: 215 20% 70%;
+  --border: 222 24% 22%;
+  --primary: 200 98% 60%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 164 85% 47%;
+  --accent-foreground: 222 47% 11%;
+  --success: 142 70% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.12), transparent 34%),
+      radial-gradient(circle at 90% 18%, rgba(16, 185, 129, 0.1), transparent 36%),
+      radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.08), transparent 42%);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border border-border shadow-soft;
+  }
+
+  .section-pad {
+    @apply py-14 md:py-20;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
