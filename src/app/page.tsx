@@ -10,7 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { trustBenefits, howItWorksSteps } from '@/data/services';
 import { PartnersGrid } from '@/components/partners-grid';
-import { pricingConfig, formatUZS } from '@/config/pricing';
+import { boostPricing, formatUZS } from '@/config/pricing';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Bosh sahifa',
@@ -19,7 +19,7 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function HomePage() {
-  const boostStandard = pricingConfig.BOOST.packages.standard;
+  const boostStandard = boostPricing.find((item) => item.days === 7) ?? boostPricing[0];
 
   return (
     <>
@@ -49,8 +49,8 @@ export default function HomePage() {
             <div className="grid gap-3 sm:grid-cols-3">
               <Card className="rounded-2xl bg-card/70 p-4">
                 <p className="text-xs text-muted-foreground">BOOST Standard</p>
-                <p className="mt-1 font-display text-xl font-semibold">{formatUZS(boostStandard.basePrice)} UZS</p>
-                <p className="text-xs text-muted-foreground">/ {boostStandard.unitLabel}</p>
+                <p className="mt-1 font-display text-xl font-semibold">{formatUZS(boostStandard.unitPrice)} UZS</p>
+                <p className="text-xs text-muted-foreground">/ unit ({boostStandard.days} kun)</p>
               </Card>
               <Card className="rounded-2xl bg-card/70 p-4">
                 <p className="text-xs text-muted-foreground">Hamkorlar</p>

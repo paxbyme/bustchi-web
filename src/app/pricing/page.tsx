@@ -1,27 +1,24 @@
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/metadata';
 import { PageIntro } from '@/components/page-intro';
-import { pricingConfig, type PackageKey, type ServiceType, formatUZS } from '@/config/pricing';
+import { boostPricing, formatUZS } from '@/config/pricing';
 import { PricingCalculator } from '@/components/pricing-calculator';
 import { Card } from '@/components/ui/card';
 import { SectionHeader } from '@/components/section-header';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Narxlar',
-  description: 'Pikrchi Telegram BOOST va PREMIUM xizmatlari uchun konfiguratsiya asosidagi narx kalkulyatori.',
+  description: 'Bustchi Telegram BOOST xizmati uchun konfiguratsiya asosidagi narx kalkulyatori.',
   path: '/pricing'
 });
-
-const serviceKeys = Object.keys(pricingConfig) as ServiceType[];
-const packageOrder: PackageKey[] = ['starter', 'standard', 'pro'];
 
 export default function PricingPage() {
   return (
     <>
       <PageIntro
         badge="Narxlar"
-        title="Narx kalkulyatori va paketlar"
-        description="Narxlar `src/config/pricing.ts` konfiguratsiyasidan olinadi. UI ni o'zgartirmasdan bazaviy narx, limit va chegirma qoidalarini yangilashingiz mumkin."
+        title="Boost narx kalkulyatori va muddatlar"
+        description="Narxlar `src/config/pricing.ts` dagi BOOST jadvalidan olinadi. Muddatni tanlang, sonni kiriting va jami narxni darhol ko'ring."
       />
 
       <section className="section-pad pt-0">
@@ -34,35 +31,21 @@ export default function PricingPage() {
         <div className="container space-y-8">
           <SectionHeader
             badge="Konfiguratsiya asosida"
-            title="Paketlar overview"
-            description="Quyidagi kartalar ham pricing config faylidan avtomatik render qilinadi."
+            title="BOOST narx jadvali"
+            description="Quyidagi qiymatlar kalkulyator ishlatadigan bir xil `boostPricing` konfiguratsiyasidan render qilinadi."
           />
-          <div className="grid gap-6 xl:grid-cols-2">
-            {serviceKeys.map((serviceKey) => {
-              const service = pricingConfig[serviceKey];
-              return (
-                <Card key={serviceKey} className="rounded-2xl bg-card/70 p-5 md:p-6">
-                  <h3 className="font-display text-xl font-semibold">{service.label}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                    {packageOrder.map((packageKey) => {
-                      const pkg = service.packages[packageKey];
-                      return (
-                        <div key={packageKey} className="rounded-xl border border-border/70 bg-background/60 p-4">
-                          <p className="text-sm font-semibold">{pkg.label}</p>
-                          <p className="mt-2 font-display text-lg font-semibold">{formatUZS(pkg.basePrice)} UZS</p>
-                          <p className="text-xs text-muted-foreground">/{pkg.unitLabel}</p>
-                          <p className="mt-2 text-xs leading-5 text-muted-foreground">{pkg.shortDescription}</p>
-                          <p className="mt-2 text-[11px] text-muted-foreground">
-                            Min: {pkg.minQuantity}, Max: {pkg.maxQuantity}
-                          </p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </Card>
-              );
-            })}
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {boostPricing.map((item) => (
+              <Card key={item.days} className="rounded-2xl bg-card/70 p-5">
+                <p className="text-sm text-muted-foreground">Duration</p>
+                <h3 className="mt-1 font-display text-2xl font-semibold">
+                  {item.days} {item.days === 1 ? 'day' : 'days'}
+                </h3>
+                <p className="mt-4 text-sm text-muted-foreground">Unit price</p>
+                <p className="mt-1 font-display text-xl font-semibold">{formatUZS(item.unitPrice)} UZS</p>
+                <p className="text-xs text-muted-foreground">per 1 boost unit</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Shartlar',
-  description: 'Pikrchi terms sahifasi uchun placeholder.',
+  description: 'Bustchi terms sahifasi uchun placeholder.',
   path: '/terms'
 });
 

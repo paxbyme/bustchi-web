@@ -7,7 +7,7 @@ import { CTAButton } from '@/components/cta-button';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Biz haqimizda',
-  description: 'Pikrchi missiyasi, positioning va Telegram growth xizmatlari bo\'yicha yondashuvi.',
+  description: 'Bustchi missiyasi, positioning va Telegram BOOST xizmati bo\'yicha yondashuvi.',
   path: '/about'
 });
 
@@ -15,7 +15,7 @@ const values = [
   {
     icon: Target,
     title: 'Aniq positioning',
-    description: 'Pikrchi Telegram uchun natijaga yo\'naltirilgan xizmatlarni soddalashtiradi: BOOST va PREMIUM.'
+    description: 'Bustchi Telegram uchun natijaga yo\'naltirilgan BOOST xizmatini soddalashtiradi.'
   },
   {
     icon: Shield,
@@ -34,8 +34,8 @@ export default function AboutPage() {
     <>
       <PageIntro
         badge="Biz haqimizda"
-        title="Pikrchi nima uchun yaratilgan?"
-        description="Telegramda ishlaydigan ekspertlar va brendlar ko'pincha xizmat tanlashda murakkab jarayon, noaniq narx va sust aloqa bilan duch keladi. Pikrchi bu jarayonni minimal va aniq qiladi."
+        title="Bustchi nima uchun yaratilgan?"
+        description="Telegramda ishlaydigan ekspertlar va brendlar ko'pincha xizmat tanlashda murakkab jarayon, noaniq narx va sust aloqa bilan duch keladi. Bustchi bu jarayonni minimal va aniq qiladi."
       />
 
       <section className="section-pad pt-0">
@@ -44,7 +44,7 @@ export default function AboutPage() {
             <h2 className="font-display text-2xl font-semibold">Missiya va yondashuv</h2>
             <div className="mt-4 space-y-4 text-sm leading-7 text-muted-foreground sm:text-base">
               <p>
-                Pikrchi missiyasi - Telegram ekotizimida ishlovchi loyihalar uchun tezkor, tushunarli va ishonchli xizmat oqimini yaratish. Bunda asosiy ikki yo&apos;nalish: o&apos;sishga xizmat qiluvchi BOOST va foydalanish qulayligini oshiruvchi PREMIUM.
+                Bustchi missiyasi - Telegram ekotizimida ishlovchi loyihalar uchun tezkor, tushunarli va ishonchli BOOST xizmat oqimini yaratish.
               </p>
               <p>
                 Platforma marketing landing formatida qurilgan: foydalanuvchi xizmatni tushunadi, narxni hisoblaydi va Telegram orqali bir klikda aloqa qiladi. Bu conversion ni oshirishga xizmat qiladi.

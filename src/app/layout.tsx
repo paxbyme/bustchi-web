@@ -18,21 +18,27 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  manifest: '/manifest.webmanifest',
   title: {
-    default: 'Pikrchi | Telegram BOOST va PREMIUM xizmatlari',
+    default: 'Bustchi | Telegram BOOST xizmati',
     template: `%s | ${siteConfig.name}`
   },
   description: siteConfig.description,
+  alternates: {
+    canonical: siteConfig.url
+  },
   openGraph: {
-    title: 'Pikrchi',
+    title: 'Bustchi',
     description: siteConfig.description,
     type: 'website',
+    url: siteConfig.url,
     siteName: siteConfig.name,
     locale: 'uz_UZ'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pikrchi',
+    title: 'Bustchi',
     description: siteConfig.description
   }
 };

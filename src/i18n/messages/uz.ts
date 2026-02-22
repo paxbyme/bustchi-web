@@ -1,6 +1,6 @@
 export const uzMessages = {
   common: {
-    brand: 'Pikrchi',
+    brand: 'Bustchi',
     contactTelegram: 'Telegram orqali bog\'lanish'
   },
   nav: {

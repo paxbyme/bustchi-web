@@ -9,7 +9,7 @@ export const faqItems: FAQItem[] = [
     id: 'safety',
     question: 'Xizmatlar xavfsizmi?',
     answer:
-      'Pikrchi jarayonda ehtiyotkor va shaffof ishlashni ustuvor qiladi. Buyurtma bo\'yicha barcha shartlar Telegram orqali oldindan kelishiladi.'
+      'Bustchi jarayonda ehtiyotkor va shaffof ishlashni ustuvor qiladi. Buyurtma bo\'yicha barcha shartlar Telegram orqali oldindan kelishiladi.'
   },
   {
     id: 'timing',

@@ -1,7 +1,7 @@
 import { Rocket, ShieldCheck, Sparkles, TrendingUp } from 'lucide-react';
 
 export interface ServiceItem {
-  id: 'boost' | 'premium';
+  id: 'boost';
   name: string;
   icon: typeof Rocket;
   description: string;
@@ -20,16 +20,6 @@ export const services: ServiceItem[] = [
     forWho: ['Ekspertlar va trenerlar', 'Academy va kurs launchlari', 'Mahsulot/savdo kanallari', 'Shaxsiy bloglar'],
     included: ['Boshlang\'ich audit', 'Paket bo\'yicha boost kampaniya', 'Jarayon monitoringi', 'Natija haqida qisqa feedback'],
     outcomes: ['Ko\'rinish va signal kuchayadi', 'Ishonch va ijtimoiy isbot yaxshilanadi', 'Launch/post performance tezroq o\'sadi']
-  },
-  {
-    id: 'premium',
-    name: 'Telegram PREMIUM',
-    icon: Sparkles,
-    description:
-      'Telegram Premium aktivatsiya xizmati. Turli muddat va hajmlar uchun paketlar mavjud, narxlar konfiguratsiya asosida boshqariladi.',
-    forWho: ['Kontent creatorlar', 'Biznes akkauntlar', 'Telegramda faol mutaxassislar', 'Jamoaviy accountlar'],
-    included: ['Paket tanlash bo\'yicha yordam', 'Tezkor aktivatsiya', 'Status tracking', 'Telegram orqali support'],
-    outcomes: ['Premium imkoniyatlardan tez foydalanish', 'Ish jarayonida qulaylik', 'Bulk buyurtmalar uchun tejamkor narx']
   }
 ];
 
@@ -55,7 +45,7 @@ export const howItWorksSteps = [
   {
     step: '01',
     title: 'Xizmatni tanlang',
-    description: 'BOOST yoki PREMIUM xizmatidan keraklisini tanlaysiz.'
+    description: 'BOOST xizmati uchun mos paketni tanlaysiz.'
   },
   {
     step: '02',

@@ -1,158 +1,65 @@
-export type ServiceType = 'BOOST' | 'PREMIUM';
-export type PackageKey = 'starter' | 'standard' | 'pro';
+import { z } from 'zod';
+import { siteConfig } from '@/lib/site';
 
-export interface PackageConfig {
-  label: string;
-  basePrice: number;
-  unitLabel: string;
-  shortDescription: string;
-  included: string[];
-  recommendedFor: string;
-  minQuantity: number;
-  maxQuantity: number;
-}
+export const boostPricing = [
+  { days: 1, unitPrice: 150 },
+  { days: 7, unitPrice: 900 },
+  { days: 15, unitPrice: 2000 },
+  { days: 30, unitPrice: 4000 },
+  { days: 60, unitPrice: 8000 },
+  { days: 90, unitPrice: 10000 }
+] as const;
 
-export interface ServicePricingConfig {
-  label: string;
-  description: string;
-  quantityLabel: string;
-  quantityHint: string;
-  packages: Record<PackageKey, PackageConfig>;
-  discounts?: Array<{
-    minQuantity: number;
-    percentOff: number;
-  }>;
-}
+export type BoostPricingOption = (typeof boostPricing)[number];
+export type BoostDurationDays = BoostPricingOption['days'];
 
-export const pricingConfig: Record<ServiceType, ServicePricingConfig> = {
-  BOOST: {
-    label: 'Telegram BOOST',
-    description: 'Kanal yoki loyiha uchun ko\'rinish, jalb va ishonchni oshirish kampaniyalari.',
-    quantityLabel: 'Kampaniya birligi',
-    quantityHint: 'Masalan: post boost, promo wave yoki kampaniya unit soni',
-    discounts: [
-      { minQuantity: 10, percentOff: 5 },
-      { minQuantity: 20, percentOff: 10 }
-    ],
-    packages: {
-      starter: {
-        label: 'Starter',
-        basePrice: 85000,
-        unitLabel: '1 kampaniya birligi',
-        shortDescription: 'Yangi boshlayotgan kanallar uchun tezkor start paketi.',
-        recommendedFor: 'Shaxsiy blog, mini-kanal, test kampaniya',
-        minQuantity: 1,
-        maxQuantity: 50,
-        included: ['Boshlang\'ich strategiya', 'Tez ishga tushirish', 'Natija bo\'yicha qisqa hisobot']
-      },
-      standard: {
-        label: 'Standard',
-        basePrice: 140000,
-        unitLabel: '1 kampaniya birligi',
-        shortDescription: 'Barqaror o\'sish va takroriy kampaniyalar uchun optimal paket.',
-        recommendedFor: 'Ekspertlar, kurslar, savdo kanallari',
-        minQuantity: 1,
-        maxQuantity: 100,
-        included: ['Audit + tavsiya', 'Kampaniya optimizatsiyasi', 'O\'rta darajadagi reporting']
-      },
-      pro: {
-        label: 'Pro',
-        basePrice: 220000,
-        unitLabel: '1 kampaniya birligi',
-        shortDescription: 'Katta launch va agressiv o\'sish uchun premium daraja.',
-        recommendedFor: 'Brend launch, academy intake, yuqori trafik kampaniya',
-        minQuantity: 1,
-        maxQuantity: 200,
-        included: ['Prioritet navbat', 'Pro strategik setup', 'Kengaytirilgan monitoring']
-      }
-    }
-  },
-  PREMIUM: {
-    label: 'Telegram PREMIUM',
-    description: 'Telegram Premium aktivatsiyasi va muddatli paketlar.',
-    quantityLabel: 'Kun / birlik',
-    quantityHint: 'Premium paket turi bo\'yicha miqdor yoki muddat soni',
-    discounts: [
-      { minQuantity: 30, percentOff: 4 },
-      { minQuantity: 90, percentOff: 8 }
-    ],
-    packages: {
-      starter: {
-        label: 'Starter',
-        basePrice: 18000,
-        unitLabel: '1 kun / birlik',
-        shortDescription: 'Qisqa muddatli foydalanish uchun mos paket.',
-        recommendedFor: 'Sinov, qisqa loyiha, tez aktivatsiya',
-        minQuantity: 7,
-        maxQuantity: 180,
-        included: ['Tez aktivatsiya', 'Bazaviy support', 'Aniq narx hisob-kitobi']
-      },
-      standard: {
-        label: 'Standard',
-        basePrice: 16000,
-        unitLabel: '1 kun / birlik',
-        shortDescription: 'Ko\'pchilik foydalanuvchilar uchun balanslangan variant.',
-        recommendedFor: 'Kontent creator, biznes account, mutaxassislar',
-        minQuantity: 30,
-        maxQuantity: 365,
-        included: ['Tezkor ulanish', 'Muntazam qo\'llab-quvvatlash', 'Qulay bulk narx']
-      },
-      pro: {
-        label: 'Pro',
-        basePrice: 14500,
-        unitLabel: '1 kun / birlik',
-        shortDescription: 'Uzoq muddatli premium foydalanish uchun eng tejamkor paket.',
-        recommendedFor: 'Doimiy ishlovchi ekspert va kompaniyalar',
-        minQuantity: 90,
-        maxQuantity: 730,
-        included: ['Prioritet support', 'Bulk discount', 'Yirik buyurtma koordinatsiyasi']
-      }
-    }
-  }
-};
+export const DEFAULT_BOOST_DURATION_DAYS: BoostDurationDays =
+  (boostPricing.find((item) => item.days === 7)?.days as BoostDurationDays | undefined) ?? boostPricing[0].days;
 
-export interface PricingResult {
-  service: ServiceType;
-  packageKey: PackageKey;
+export const boostQuantitySchema = z.coerce.number().int().min(1);
+
+export interface BoostPricingResult {
+  days: BoostDurationDays;
+  unitPrice: number;
   quantity: number;
-  subtotal: number;
-  discountPercent: number;
-  discountAmount: number;
   total: number;
-  description: string;
 }
 
 export function formatUZS(amount: number) {
-  return new Intl.NumberFormat('uz-UZ').format(Math.round(amount));
+  return Math.round(amount)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
-export function getDiscountPercent(service: ServiceType, quantity: number) {
-  const discounts = pricingConfig[service].discounts ?? [];
-  return discounts.reduce((acc, rule) => (quantity >= rule.minQuantity ? rule.percentOff : acc), 0);
+export function getBoostPricingOption(days?: number): BoostPricingOption {
+  return (
+    boostPricing.find((item) => item.days === days) ??
+    boostPricing.find((item) => item.days === DEFAULT_BOOST_DURATION_DAYS) ??
+    boostPricing[0]
+  );
 }
 
-export function calculatePrice(service: ServiceType, packageKey: PackageKey, quantity: number): PricingResult {
-  const pkg = pricingConfig[service].packages[packageKey];
-  const safeQuantity = Math.max(pkg.minQuantity, Math.min(quantity, pkg.maxQuantity));
-  const subtotal = pkg.basePrice * safeQuantity;
-  const discountPercent = getDiscountPercent(service, safeQuantity);
-  const discountAmount = Math.round((subtotal * discountPercent) / 100);
-  const total = subtotal - discountAmount;
+export function calculateBoostPrice(days: number, quantityInput: number): BoostPricingResult {
+  const selectedOption = getBoostPricingOption(days);
+  const parsedQuantity = boostQuantitySchema.safeParse(quantityInput);
+  const quantity = parsedQuantity.success ? parsedQuantity.data : 1;
+  const total = selectedOption.unitPrice * quantity;
 
   return {
-    service,
-    packageKey,
-    quantity: safeQuantity,
-    subtotal,
-    discountPercent,
-    discountAmount,
-    total,
-    description: `${pricingConfig[service].label} / ${pkg.label} - ${pkg.shortDescription}`
+    days: selectedOption.days,
+    unitPrice: selectedOption.unitPrice,
+    quantity,
+    total
   };
 }
 
-export function createCalculatorTelegramMessage(result: PricingResult) {
-  const serviceLabel = pricingConfig[result.service].label;
-  const packageLabel = pricingConfig[result.service].packages[result.packageKey].label;
-  return `Assalomu alaykum, Pikrchi!\nI selected ${serviceLabel} - ${packageLabel}.\nQuantity: ${result.quantity}\nTotal price: ${formatUZS(result.total)} UZS`;
+export function createBoostCalculatorTelegramMessage(result: BoostPricingResult) {
+  return [
+    `Assalomu alaykum, ${siteConfig.name}! Men BOOST tanladim.`,
+    `Muddat: ${result.days} kun`,
+    `Soni: ${result.quantity}`,
+    `Donasi: ${formatUZS(result.unitPrice)} so'm`,
+    `Jami: ${formatUZS(result.total)} so'm`,
+    'Buyurtma beraman.'
+  ].join('\n');
 }
