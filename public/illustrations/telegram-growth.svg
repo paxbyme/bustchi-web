@@ -16,13 +16,4 @@
   <rect x="190" y="95" width="220" height="18" rx="9" fill="#E2E8F0"/>
   <rect x="190" y="123" width="150" height="12" rx="6" fill="#E2E8F0"/>
   <rect x="78" y="198" width="644" height="284" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
-  <path d="M128 392C177 340 214 342 264 300C319 254 376 269 433 230C491 191 551 189 620 132" stroke="url(#g1)" stroke-width="10" stroke-linecap="round"/>
-  <circle cx="264" cy="300" r="10" fill="#0EA5E9"/>
-  <circle cx="433" cy="230" r="10" fill="#10B981"/>
-  <circle cx="620" cy="132" r="10" fill="#0EA5E9"/>
-  <rect x="126" y="430" width="84" height="16" rx="8" fill="#E2E8F0"/>
-  <rect x="226" y="420" width="84" height="26" rx="13" fill="#BAE6FD"/>
-  <rect x="326" y="403" width="84" height="43" rx="13" fill="#7DD3FC"/>
-  <rect x="426" y="387" width="84" height="59" rx="13" fill="#34D399"/>
-  <rect x="526" y="364" width="84" height="82" rx="13" fill="#10B981"/>
 </svg>
