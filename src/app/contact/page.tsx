@@ -8,7 +8,7 @@ import { CTAButton } from '@/components/cta-button';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Aloqa',
-  description: 'Pikrchi bilan bog\'lanish uchun forma va Telegram CTA.',
+  description: 'Bustchi bilan bog\'lanish uchun forma va Telegram CTA.',
   path: '/contact'
 });
 
@@ -35,7 +35,7 @@ export default function ContactPage() {
     <>
       <PageIntro
         badge="Aloqa"
-        title="Pikrchi bilan bog'lanish"
+        title="Bustchi bilan bog'lanish"
         description="Forma orqali so'rov yuboring yoki to'g'ridan-to'g'ri Telegramga yozing. Maqsadimiz: tez javob, aniq narx va tushunarli jarayon."
       />
 

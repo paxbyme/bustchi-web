@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: 'Pikrchi',
+  name: 'Bustchi',
   description:
-    'Telegram BOOST va PREMIUM xizmatlari orqali kanal, brend va ekspert loyihalarini tezroq o\'sishga yordam beruvchi platforma.',
-  url: 'https://pikrchi.uz',
-  telegramUsername: 'pikrchi_support',
-  telegramLink: 'https://t.me/pikrchi_support'
+    'Telegram BOOST xizmati orqali kanal, brend va ekspert loyihalarini tezroq o\'sishga yordam beruvchi platforma.',
+  url: 'https://bustchi.uz',
+  telegramUsername: 'bustchi',
+  telegramLink: 'https://t.me/bustchi'
 } as const;

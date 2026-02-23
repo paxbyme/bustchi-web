@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Hamkorlar',
-  description: 'Pikrchi bilan ishlagan ekspertlar, akademiyalar va brendlar ro\'yxati.',
+  description: 'Bustchi bilan ishlagan 50+ ekspert, akademiya va brendlar ro\'yxati.',
   path: '/partners'
 });
 
@@ -16,7 +16,7 @@ export default function PartnersPage() {
       <PageIntro
         badge="Hamkorlar"
         title="Ishlangan ekspertlar va brendlar"
-        description="Quyidagi grid Pikrchi ishlagan odamlar va kompaniyalar haqida preview ma'lumot beradi. Logo yoki rasm bo'lmasa gradient initials avatar avtomatik ishlatiladi."
+        description="Quyidagi grid Bustchi ishlagan 50+ odamlar va kompaniyalar haqida preview ma'lumot beradi. Logo yoki rasm bo'lmasa gradient initials avatar avtomatik ishlatiladi."
       />
 
       <section className="section-pad pt-0">

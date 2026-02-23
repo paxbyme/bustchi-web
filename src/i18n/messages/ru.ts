@@ -1,6 +1,6 @@
 export const ruMessages = {
   common: {
-    brand: 'Pikrchi',
+    brand: 'Bustchi',
     contactTelegram: 'Связаться через Telegram'
   },
   nav: {

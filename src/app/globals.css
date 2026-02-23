@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+  --font-manrope: 'Manrope', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-space: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
   --background: 210 40% 98%;
   --foreground: 222 47% 11%;
   --card: 0 0% 100%;

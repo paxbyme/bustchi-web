@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, TrendingUp } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { createPageMetadata } from '@/lib/metadata';
 import { SectionHeader } from '@/components/section-header';
 import { CTAButton } from '@/components/cta-button';
@@ -10,33 +9,30 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { trustBenefits, howItWorksSteps } from '@/data/services';
 import { PartnersGrid } from '@/components/partners-grid';
-import { pricingConfig, formatUZS } from '@/config/pricing';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Bosh sahifa',
-  description: 'Pikrchi bilan Telegram BOOST va PREMIUM xizmatlarini xavfsiz, tez va shaffof narxda oling.',
+  description: 'Pikrchi bilan Telegram BOOST xizmatlarini xavfsiz, tez va shaffof narxda oling.',
   path: '/'
 });
 
 export default function HomePage() {
-  const boostStandard = pricingConfig.BOOST.packages.standard;
-
   return (
     <>
       <section className="section-pad pb-10 md:pb-14">
-        <div className="container grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="space-y-6">
+        <div className="container">
+          <div className="mx-auto max-w-4xl space-y-6 text-center">
             <Badge className="border-primary/20 bg-primary/10 text-primary">Telegram Growth Partner</Badge>
             <div className="space-y-4">
               <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl md:text-6xl">
-                Telegram o&apos;sishi uchun <span className="text-primary">BOOST</span> va <span className="text-accent">PREMIUM</span> xizmatlari
+                Telegram o&apos;sishi uchun <span className="text-primary">BOOST</span> xizmatlari
               </h1>
-              <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                Pikrchi ekspertlar, bizneslar va akademiyalar uchun Telegram reach, ishonch va qulay foydalanishni kuchaytiradigan xizmatlarni taklif qiladi. Narxlar shaffof, jarayon aniq, CTA esa to&apos;g&apos;ridan-to&apos;g&apos;ri Telegramga olib boradi.
+              <p className="mx-auto max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+                Pikrchi ekspertlar, bizneslar va akademiyalar uchun Telegram reach va ishonchni kuchaytiradigan BOOST xizmatlarini taklif qiladi. Narxlar shaffof, jarayon aniq, CTA esa to&apos;g&apos;ridan-to&apos;g&apos;ri Telegramga olib boradi.
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
               <CTAButton size="lg" label="Telegram orqali bog'lanish" />
               <Link href="/pricing">
                 <Button variant="outline" size="lg">
@@ -45,57 +41,6 @@ export default function HomePage() {
                 </Button>
               </Link>
             </div>
-
-            <div className="grid gap-3 sm:grid-cols-3">
-              <Card className="rounded-2xl bg-card/70 p-4">
-                <p className="text-xs text-muted-foreground">BOOST Standard</p>
-                <p className="mt-1 font-display text-xl font-semibold">{formatUZS(boostStandard.basePrice)} UZS</p>
-                <p className="text-xs text-muted-foreground">/ {boostStandard.unitLabel}</p>
-              </Card>
-              <Card className="rounded-2xl bg-card/70 p-4">
-                <p className="text-xs text-muted-foreground">Hamkorlar</p>
-                <p className="mt-1 font-display text-xl font-semibold">19+</p>
-                <p className="text-xs text-muted-foreground">ekspert va brendlar</p>
-              </Card>
-              <Card className="rounded-2xl bg-card/70 p-4">
-                <p className="text-xs text-muted-foreground">Asosiy CTA</p>
-                <p className="mt-1 font-display text-xl font-semibold">Telegram</p>
-                <p className="text-xs text-muted-foreground">tezkor aloqa va buyurtma</p>
-              </Card>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -left-6 -top-6 hidden size-20 rounded-full bg-primary/20 blur-2xl sm:block" />
-            <div className="absolute -bottom-8 -right-6 hidden size-24 rounded-full bg-accent/20 blur-2xl sm:block" />
-            <Card className="glass-panel overflow-hidden rounded-3xl p-3 md:p-4">
-              <div className="rounded-2xl border border-border/70 bg-background/80 p-3">
-                <Image
-                  src="/illustrations/telegram-growth.svg"
-                  alt="Telegram growth analytics illustration"
-                  width={800}
-                  height={560}
-                  priority
-                  className="h-auto w-full rounded-xl"
-                />
-              </div>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-border/70 bg-card p-4 motion-safe:animate-fade-up">
-                  <div className="mb-2 flex items-center gap-2 text-sm font-medium">
-                    <TrendingUp className="size-4 text-primary" />
-                    BOOST Kampaniya
-                  </div>
-                  <p className="text-xs leading-5 text-muted-foreground">Launch yoki promo oldidan signal va ko&apos;rinishni oshirish uchun konfiguratsiyalangan paketlar.</p>
-                </div>
-                <div className="rounded-xl border border-border/70 bg-card p-4 motion-safe:animate-fade-up [animation-delay:120ms]">
-                  <div className="mb-2 flex items-center gap-2 text-sm font-medium">
-                    <Sparkles className="size-4 text-accent" />
-                    PREMIUM Paket
-                  </div>
-                  <p className="text-xs leading-5 text-muted-foreground">Muddatga qarab tejamkor paketlar, bulk chegirma va Telegram orqali tez tasdiqlash.</p>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
       </section>

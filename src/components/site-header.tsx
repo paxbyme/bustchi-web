@@ -36,10 +36,10 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center justify-between gap-3">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-sm font-bold text-white shadow-soft">
-            P
+            B
           </span>
           <div>
-            <p className="font-display text-base font-semibold leading-none">Pikrchi</p>
+            <p className="font-display text-base font-semibold leading-none">Bustchi</p>
             <p className="text-xs text-muted-foreground">Telegram Growth</p>
           </div>
         </Link>

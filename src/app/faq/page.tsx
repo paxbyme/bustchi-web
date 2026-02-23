@@ -8,7 +8,7 @@ import { CTAButton } from '@/components/cta-button';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'FAQ',
-  description: 'Pikrchi xizmatlari bo\'yicha ko\'p beriladigan savollar: xavfsizlik, timing, natija va narxlar.',
+  description: 'Bustchi xizmatlari bo\'yicha ko\'p beriladigan savollar: xavfsizlik, timing, natija va narxlar.',
   path: '/faq'
 });
 

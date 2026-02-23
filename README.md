@@ -1,6 +1,6 @@
-# Pikrchi Marketing Website
+# Bustchi Marketing Website
 
-Modern, high-conversion marketing website for **Pikrchi** (Telegram **BOOST** and **PREMIUM** services) built with **Next.js App Router**, **TypeScript**, and **TailwindCSS**.
+Modern, high-conversion marketing website for **Bustchi** (Telegram **BOOST** service) built with **Next.js App Router**, **TypeScript**, and **TailwindCSS**.
 
 ## Stack
 
@@ -27,7 +27,7 @@ Modern, high-conversion marketing website for **Pikrchi** (Telegram **BOOST** an
 ## Routes
 
 - `/` - Landing page
-- `/services` - BOOST and PREMIUM details
+- `/services` - BOOST service details
 - `/partners` - partners grid + filters
 - `/pricing` - pricing calculator (critical feature)
 - `/about` - project positioning and mission
@@ -56,7 +56,7 @@ UI updates automatically without changing calculator components.
 The pricing calculator generates a prefilled Telegram message in this format:
 
 ```text
-Assalomu alaykum, Pikrchi!
+Assalomu alaykum, Bustchi!
 I selected [SERVICE] - [PACKAGE].
 Quantity: X
 Total price: Y UZS

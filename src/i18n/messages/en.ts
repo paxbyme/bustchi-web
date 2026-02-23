@@ -1,6 +1,6 @@
 export const enMessages = {
   common: {
-    brand: 'Pikrchi',
+    brand: 'Bustchi',
     contactTelegram: 'Contact via Telegram'
   },
   nav: {
