@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { siteConfig } from '@/lib/site';
 
 export const boostPricing = [
   { days: 1, unitPrice: 150 },
@@ -51,15 +50,4 @@ export function calculateBoostPrice(days: number, quantityInput: number): BoostP
     quantity,
     total
   };
-}
-
-export function createBoostCalculatorTelegramMessage(result: BoostPricingResult) {
-  return [
-    `Assalomu alaykum, ${siteConfig.name}! Men BOOST tanladim.`,
-    `Muddat: ${result.days} kun`,
-    `Soni: ${result.quantity}`,
-    `Donasi: ${formatUZS(result.unitPrice)} so'm`,
-    `Jami: ${formatUZS(result.total)} so'm`,
-    'Buyurtma beraman.'
-  ].join('\n');
 }

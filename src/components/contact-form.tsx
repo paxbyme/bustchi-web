@@ -1,15 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Loader2, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { CTAButton } from '@/components/cta-button';
-import { contactFormSchema, type ContactFormValues } from '@/lib/contact';
+import { type ContactFormValues } from '@/lib/contact';
+import { useMessages } from '@/i18n/context';
+
+const PHONE_REGEX = /^[+]?[-()\d\s]{7,20}$/;
+const TELEGRAM_USERNAME_REGEX = /^@?[A-Za-z0-9_]{4,32}$/;
 
 type ContactApiResponse = {
   ok: boolean;
@@ -26,6 +31,48 @@ function isContactFormFieldName(value: string): value is ContactFormFieldName {
 }
 
 export function ContactForm() {
+  const m = useMessages();
+
+  const contactSchema = useMemo(() => {
+    const normalizedOptionalTelegramUsername = z
+      .string()
+      .trim()
+      .max(33, m.validation.telegramMax)
+      .optional()
+      .or(z.literal(''))
+      .transform((value) => value ?? '')
+      .refine(
+        (value) => value === '' || TELEGRAM_USERNAME_REGEX.test(value),
+        m.validation.telegramFormat
+      )
+      .transform((value) => (value && !value.startsWith('@') ? `@${value}` : value));
+
+    return z.object({
+      name: z
+        .string()
+        .trim()
+        .min(2, m.validation.nameMin)
+        .max(80, m.validation.nameMax),
+      phone: z
+        .string()
+        .trim()
+        .min(7, m.validation.phoneMin)
+        .max(20, m.validation.phoneMax)
+        .regex(PHONE_REGEX, m.validation.phoneFormat),
+      telegramUsername: normalizedOptionalTelegramUsername,
+      message: z
+        .string()
+        .trim()
+        .min(10, m.validation.messageMin)
+        .max(2000, m.validation.messageMax)
+    });
+  }, [m]);
+
+  // Use a ref so the resolver always validates against the latest locale-aware schema
+  // without forcing useForm to re-initialize (which would reset form state).
+  const schemaRef = useRef(contactSchema);
+  schemaRef.current = contactSchema;
+
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [requestId, setRequestId] = useState<string | null>(null);
@@ -40,7 +87,9 @@ export function ContactForm() {
     clearErrors,
     formState: { errors, isSubmitting }
   } = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: async (values, context, options) => {
+      return zodResolver(schemaRef.current)(values, context, options);
+    },
     defaultValues: {
       name: '',
       phone: '',
@@ -84,7 +133,7 @@ export function ContactForm() {
           }
         }
 
-        setSubmitError(payload?.error || 'Xabar yuborishda xatolik yuz berdi. Qayta urinib ko\'ring.');
+        setSubmitError(payload?.error || m.errors.submitFailed);
         return;
       }
 
@@ -94,7 +143,7 @@ export function ContactForm() {
       setHoneypot('');
       setStartedAt(Date.now());
     } catch {
-      setSubmitError('Tarmoq xatosi. Internetni tekshirib, qayta urinib ko\'ring.');
+      setSubmitError(m.errors.networkError);
     }
   };
 
@@ -104,18 +153,18 @@ export function ContactForm() {
         <div className="space-y-4 rounded-xl border border-success/20 bg-success/5 p-4" role="status" aria-live="polite">
           <div className="flex items-center gap-2 text-success">
             <CheckCircle2 className="size-5" />
-            <p className="font-medium">Xabaringiz qabul qilindi</p>
+            <p className="font-medium">{m.contact.success.title}</p>
           </div>
           <p className="text-sm text-muted-foreground">
-            Tez orada javob beramiz. Tezroq aloqa uchun Telegram CTA tugmasidan foydalanishingiz mumkin.
+            {m.contact.success.description}
           </p>
           {requestId ? (
             <p className="text-xs text-muted-foreground">
-              So&apos;rov ID: <span className="font-mono">{requestId}</span>
+              {m.contact.success.requestIdLabel} <span className="font-mono">{requestId}</span>
             </p>
           ) : null}
           <div className="flex flex-wrap gap-3">
-            <CTAButton label="Telegram orqali yozish" />
+            <CTAButton label={m.contact.success.writeViaTelegram} />
             <Button
               type="button"
               variant="outline"
@@ -126,7 +175,7 @@ export function ContactForm() {
                 setStartedAt(Date.now());
               }}
             >
-              Yangi xabar yuborish
+              {m.contact.success.sendNewMessage}
             </Button>
           </div>
         </div>
@@ -147,11 +196,11 @@ export function ContactForm() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <label htmlFor="name" className="text-sm text-muted-foreground">
-                Ism
+                {m.contact.form.nameLabel}
               </label>
               <Input
                 id="name"
-                placeholder="Ismingiz"
+                placeholder={m.contact.form.namePlaceholder}
                 autoComplete="name"
                 disabled={isSubmitting}
                 aria-invalid={errors.name ? 'true' : 'false'}
@@ -161,14 +210,14 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <label htmlFor="phone" className="text-sm text-muted-foreground">
-                Telefon
+                {m.contact.form.phoneLabel}
               </label>
               <Input
                 id="phone"
                 type="tel"
                 inputMode="tel"
                 autoComplete="tel"
-                placeholder="+998 ..."
+                placeholder={m.contact.form.phonePlaceholder}
                 disabled={isSubmitting}
                 aria-invalid={errors.phone ? 'true' : 'false'}
                 {...register('phone')}
@@ -179,12 +228,12 @@ export function ContactForm() {
 
           <div className="space-y-2">
             <label htmlFor="telegramUsername" className="text-sm text-muted-foreground">
-              Telegram username
+              {m.contact.form.telegramLabel}
             </label>
             <Input
               id="telegramUsername"
               autoComplete="off"
-              placeholder="@username (ixtiyoriy)"
+              placeholder={m.contact.form.telegramPlaceholder}
               disabled={isSubmitting}
               aria-invalid={errors.telegramUsername ? 'true' : 'false'}
               {...register('telegramUsername')}
@@ -196,11 +245,11 @@ export function ContactForm() {
 
           <div className="space-y-2">
             <label htmlFor="message" className="text-sm text-muted-foreground">
-              Xabar
+              {m.contact.form.messageLabel}
             </label>
             <Textarea
               id="message"
-              placeholder="Nima xizmat kerakligi va maqsadingizni yozing..."
+              placeholder={m.contact.form.messagePlaceholder}
               disabled={isSubmitting}
               aria-invalid={errors.message ? 'true' : 'false'}
               {...register('message')}
@@ -219,13 +268,13 @@ export function ContactForm() {
               {isSubmitting ? (
                 <>
                   <Loader2 className="size-4 animate-spin" />
-                  Yuborilmoqda...
+                  {m.contact.form.submittingButton}
                 </>
               ) : (
-                'Xabar yuborish'
+                m.contact.form.submitButton
               )}
             </Button>
-            <CTAButton variant="outline" size="lg" label="Telegram orqali bog'lanish" />
+            <CTAButton variant="outline" size="lg" label={m.contact.form.altCta} />
           </div>
         </form>
       )}

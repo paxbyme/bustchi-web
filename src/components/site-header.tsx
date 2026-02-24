@@ -5,26 +5,29 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { LanguageSwitcher } from '@/components/language-switcher';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { getMessages } from '@/i18n';
+import { useMessages } from '@/i18n/context';
 import { buildTelegramLink } from '@/lib/telegram';
-
-const messages = getMessages('uz');
-
-const navItems = [
-  { href: '/', label: messages.nav.home },
-  { href: '/services', label: messages.nav.services },
-  { href: '/partners', label: messages.nav.partners },
-  { href: '/pricing', label: messages.nav.pricing },
-  { href: '/about', label: messages.nav.about },
-  { href: '/contact', label: messages.nav.contact },
-  { href: '/faq', label: messages.nav.faq }
-];
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const m = useMessages();
+
+  const navItems = useMemo(
+    () => [
+      { href: '/', label: m.nav.home },
+      { href: '/services', label: m.nav.services },
+      { href: '/partners', label: m.nav.partners },
+      { href: '/pricing', label: m.nav.pricing },
+      { href: '/about', label: m.nav.about },
+      { href: '/contact', label: m.nav.contact },
+      { href: '/faq', label: m.nav.faq }
+    ],
+    [m]
+  );
 
   const isActive = useMemo(
     () => (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href)),
@@ -39,8 +42,8 @@ export function SiteHeader() {
             B
           </span>
           <div>
-            <p className="font-display text-base font-semibold leading-none">Bustchi</p>
-            <p className="text-xs text-muted-foreground">Telegram Growth</p>
+            <p className="font-display text-base font-semibold leading-none">{m.common.brand}</p>
+            <p className="text-xs text-muted-foreground">{m.common.telegramGrowth}</p>
           </div>
         </Link>
 
@@ -60,9 +63,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <LanguageSwitcher />
           <ThemeToggle />
           <Link href={buildTelegramLink()} className="hidden md:block" target="_blank" rel="noreferrer">
-            <Button size="sm">{messages.common.contactTelegram}</Button>
+            <Button size="sm">{m.common.contactTelegram}</Button>
           </Link>
           <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setOpen((v) => !v)}>
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -87,7 +91,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <Link href={buildTelegramLink()} onClick={() => setOpen(false)} target="_blank" rel="noreferrer" className="block pt-2">
-              <Button className="w-full">{messages.common.contactTelegram}</Button>
+              <Button className="w-full">{m.common.contactTelegram}</Button>
             </Link>
           </div>
         </div>

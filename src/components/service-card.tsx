@@ -1,12 +1,16 @@
+'use client';
+
 import { CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import type { ServiceItem } from '@/data/services';
+import { useMessages } from '@/i18n/context';
 
 interface ServiceCardProps {
   service: ServiceItem;
 }
 
 export function ServiceCard({ service }: ServiceCardProps) {
+  const m = useMessages();
   const Icon = service.icon;
 
   return (
@@ -22,7 +26,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
 
       <div className="space-y-4 text-sm">
         <div>
-          <p className="mb-2 font-medium">Kimlar uchun</p>
+          <p className="mb-2 font-medium">{m.services.boost.forWhoTitle}</p>
           <ul className="space-y-1 text-muted-foreground">
             {service.forWho.map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -33,7 +37,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
           </ul>
         </div>
         <div>
-          <p className="mb-2 font-medium">Nima kiradi</p>
+          <p className="mb-2 font-medium">{m.services.boost.includedTitle}</p>
           <ul className="space-y-1 text-muted-foreground">
             {service.included.map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -44,7 +48,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
           </ul>
         </div>
         <div>
-          <p className="mb-2 font-medium">Kutiladigan natija</p>
+          <p className="mb-2 font-medium">{m.services.boost.outcomesTitle}</p>
           <ul className="space-y-1 text-muted-foreground">
             {service.outcomes.map((item) => (
               <li key={item} className="flex items-start gap-2">

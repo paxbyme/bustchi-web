@@ -1,26 +1,35 @@
+'use client';
+
+import { useMemo } from 'react';
 import Link from 'next/link';
 import { buildTelegramLink } from '@/lib/telegram';
-
-const footerLinks = [
-  { href: '/services', label: 'Xizmatlar' },
-  { href: '/partners', label: 'Hamkorlar' },
-  { href: '/pricing', label: 'Narxlar' },
-  { href: '/faq', label: 'FAQ' },
-  { href: '/terms', label: 'Shartlar' }
-];
+import { useMessages } from '@/i18n/context';
 
 export function SiteFooter() {
+  const m = useMessages();
+
+  const footerLinks = useMemo(
+    () => [
+      { href: '/services', label: m.footer.links.services },
+      { href: '/partners', label: m.footer.links.partners },
+      { href: '/pricing', label: m.footer.links.pricing },
+      { href: '/faq', label: m.footer.links.faq },
+      { href: '/terms', label: m.footer.links.terms }
+    ],
+    [m]
+  );
+
   return (
     <footer className="mt-10 border-t border-border/60 bg-card/60 backdrop-blur">
       <div className="container grid gap-8 py-10 md:grid-cols-[1.3fr_1fr_1fr]">
         <div className="space-y-3">
-          <p className="font-display text-xl font-semibold">Bustchi</p>
+          <p className="font-display text-xl font-semibold">{m.common.brand}</p>
           <p className="max-w-md text-sm text-muted-foreground">
-            Telegram BOOST xizmati orqali ekspertlar, akademiyalar va bizneslar uchun tezkor o&apos;sish infratuzilmasi.
+            {m.footer.description}
           </p>
         </div>
         <div>
-          <p className="mb-3 text-sm font-semibold">Sahifalar</p>
+          <p className="mb-3 text-sm font-semibold">{m.footer.pagesTitle}</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
             {footerLinks.map((link) => (
               <li key={link.href}>
@@ -32,20 +41,20 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <p className="mb-3 text-sm font-semibold">Aloqa</p>
+          <p className="mb-3 text-sm font-semibold">{m.footer.contactTitle}</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
               <Link href={buildTelegramLink()} target="_blank" rel="noreferrer" className="hover:text-foreground">
-                Telegram: @bustchi
+                {m.footer.telegramHandle}
               </Link>
             </li>
-            <li>Javob berish vaqti: 09:00 - 22:00</li>
+            <li>{m.footer.responseTime}</li>
           </ul>
         </div>
       </div>
       <div className="border-t border-border/60">
         <div className="container py-4 text-xs text-muted-foreground">
-          {new Date().getFullYear()} Bustchi. Barcha huquqlar himoyalangan.
+          {new Date().getFullYear()} {m.footer.copyright}
         </div>
       </div>
     </footer>

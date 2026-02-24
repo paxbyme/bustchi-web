@@ -4,21 +4,24 @@ import { useMemo, useState } from 'react';
 import { partnerCategories, partners, type PartnerCategory } from '@/data/partners';
 import { PartnerCard } from '@/components/partner-card';
 import { cn } from '@/lib/utils';
+import { useMessages } from '@/i18n/context';
 
 interface PartnersGridProps {
   previewCount?: number;
   showFilters?: boolean;
 }
 
-const categoryLabels: Record<PartnerCategory | 'All', string> = {
-  All: 'Barchasi',
-  Expert: 'Ekspert',
-  Academy: 'Akademiya',
-  Business: 'Biznes',
-  Travel: 'Sayohat'
-};
-
 export function PartnersGrid({ previewCount, showFilters = false }: PartnersGridProps) {
+  const m = useMessages();
+
+  const categoryLabels: Record<PartnerCategory | 'All', string> = {
+    All: m.partners.categories.all,
+    Expert: m.partners.categories.expert,
+    Academy: m.partners.categories.academy,
+    Business: m.partners.categories.business,
+    Travel: m.partners.categories.travel
+  };
+
   const [category, setCategory] = useState<PartnerCategory | 'All'>('All');
 
   const filtered = useMemo(() => {

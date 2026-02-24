@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import type { Partner, PartnerCategory } from '@/data/partners';
+import { useMessages } from '@/i18n/context';
 
 function getInitials(name: string) {
   return name
@@ -27,14 +30,16 @@ interface PartnerCardProps {
   partner: Partner;
 }
 
-const categoryLabels: Record<PartnerCategory, string> = {
-  Expert: 'Ekspert',
-  Academy: 'Akademiya',
-  Business: 'Biznes',
-  Travel: 'Sayohat'
-};
-
 export function PartnerCard({ partner }: PartnerCardProps) {
+  const m = useMessages();
+
+  const categoryLabels: Record<PartnerCategory, string> = {
+    Expert: m.partners.categories.expert,
+    Academy: m.partners.categories.academy,
+    Business: m.partners.categories.business,
+    Travel: m.partners.categories.travel
+  };
+
   const initials = getInitials(partner.name);
   const imagePath = partner.image ? `/partners/${partner.image}` : null;
 

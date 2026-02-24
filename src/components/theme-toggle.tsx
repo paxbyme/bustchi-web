@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
+import { useMessages } from '@/i18n/context';
 
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const m = useMessages();
 
   useEffect(() => setMounted(true), []);
 
@@ -18,7 +20,7 @@ export function ThemeToggle() {
       type="button"
       variant="ghost"
       size="sm"
-      aria-label="Mavzuni almashtirish"
+      aria-label={m.theme.toggleLabel}
       onClick={() => setTheme(current === 'dark' ? 'light' : 'dark')}
     >
       {mounted && current === 'dark' ? <Sun className="size-4" /> : <Moon className="size-4" />}
