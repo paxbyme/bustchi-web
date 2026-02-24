@@ -14,7 +14,7 @@ const contentSecurityPolicy = [
 ].join('; ');
 
 const nextConfig: NextConfig = {
-  outputFileTracingRoot: process.cwd(),
+  outputFileTracingRoot: import.meta.dirname,
   reactStrictMode: true,
   poweredByHeader: false,
   async headers() {

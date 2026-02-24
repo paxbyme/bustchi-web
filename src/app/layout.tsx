@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       url: siteConfig.url,
       siteName: siteConfig.name,
-      locale: locale === 'ru' ? 'ru_RU' : locale === 'en' ? 'en_US' : 'uz_UZ',
+      locale: 'uz_UZ',
       images: [{ url: '/icon-512.png', width: 512, height: 512, alt: siteConfig.name }]
     },
     twitter: {
