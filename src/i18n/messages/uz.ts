@@ -159,8 +159,6 @@ export const uzMessages: Messages = {
     introTitle: 'Ishlangan ekspertlar va brendlar',
     introDescription:
       'Quyidagi grid Bustchi ishlagan 50+ odamlar va kompaniyalar haqida preview ma\'lumot beradi. Logo yoki rasm bo\'lmasa gradient initials avatar avtomatik ishlatiladi.',
-    placeholderNote:
-      'Hamkor rasmlari keyinchalik joylashtiriladi. Hozircha placeholder/initials avatar ishlatilmoqda.',
     categories: {
       all: 'Barchasi',
       expert: 'Ekspert',

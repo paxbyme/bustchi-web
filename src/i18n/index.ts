@@ -1,20 +1,16 @@
 import type { Messages } from './types';
 import { uzMessages } from './messages/uz';
-import { enMessages } from './messages/en';
-import { ruMessages } from './messages/ru';
 
 export type { Messages };
 
-export const locales = ['uz', 'en', 'ru'] as const;
+export const locales = ['uz'] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'uz';
 
 export const LOCALE_COOKIE = 'bustchi-locale';
 
 const dictionaries: Record<Locale, Messages> = {
-  uz: uzMessages,
-  en: enMessages,
-  ru: ruMessages
+  uz: uzMessages
 };
 
 export function getMessages(locale: Locale = defaultLocale): Messages {
@@ -26,10 +22,7 @@ export function isValidLocale(value: unknown): value is Locale {
 }
 
 export function getLocaleFromCookie(): Locale {
-  if (typeof document === 'undefined') return defaultLocale;
-  const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${LOCALE_COOKIE}=([^;]*)`));
-  const value = match?.[1];
-  return isValidLocale(value) ? value : defaultLocale;
+  return defaultLocale;
 }
 
 export function setLocaleCookie(locale: Locale): void {

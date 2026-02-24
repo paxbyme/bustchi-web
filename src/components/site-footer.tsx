@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { buildTelegramLink } from '@/lib/telegram';
 import { useMessages } from '@/i18n/context';
@@ -23,7 +24,10 @@ export function SiteFooter() {
     <footer className="mt-10 border-t border-border/60 bg-card/60 backdrop-blur">
       <div className="container grid gap-8 py-10 md:grid-cols-[1.3fr_1fr_1fr]">
         <div className="space-y-3">
-          <p className="font-display text-xl font-semibold">{m.common.brand}</p>
+          <div className="flex items-center gap-2">
+            <Image src="/logo.png" alt="Bustchi" width={32} height={32} className="size-8" />
+            <p className="font-display text-xl font-semibold">{m.common.brand}</p>
+          </div>
           <p className="max-w-md text-sm text-muted-foreground">
             {m.footer.description}
           </p>

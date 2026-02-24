@@ -99,7 +99,6 @@ export interface Messages {
     badge: string;
     introTitle: string;
     introDescription: string;
-    placeholderNote: string;
     categories: {
       all: string;
       expert: string;

@@ -26,18 +26,28 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: siteConfig.url
     },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: '64x64' },
+        { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' }
+      ],
+      apple: '/apple-touch-icon.png'
+    },
     openGraph: {
       title: siteConfig.name,
       description: m.meta.defaultDescription,
       type: 'website',
       url: siteConfig.url,
       siteName: siteConfig.name,
-      locale: locale === 'ru' ? 'ru_RU' : locale === 'en' ? 'en_US' : 'uz_UZ'
+      locale: locale === 'ru' ? 'ru_RU' : locale === 'en' ? 'en_US' : 'uz_UZ',
+      images: [{ url: '/icon-512.png', width: 512, height: 512, alt: siteConfig.name }]
     },
     twitter: {
       card: 'summary_large_image',
       title: siteConfig.name,
-      description: m.meta.defaultDescription
+      description: m.meta.defaultDescription,
+      images: ['/icon-512.png']
     }
   };
 }

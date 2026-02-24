@@ -1,11 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { LanguageSwitcher } from '@/components/language-switcher';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useMessages } from '@/i18n/context';
@@ -38,9 +38,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/75 backdrop-blur-xl">
       <div className="container flex h-16 items-center justify-between gap-3">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-sm font-bold text-white shadow-soft">
-            B
-          </span>
+          <Image src="/logo.png" alt="Bustchi" width={36} height={36} className="size-9" />
           <div>
             <p className="font-display text-base font-semibold leading-none">{m.common.brand}</p>
             <p className="text-xs text-muted-foreground">{m.common.telegramGrowth}</p>
@@ -63,7 +61,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <LanguageSwitcher />
           <ThemeToggle />
           <Link href={buildTelegramLink()} className="hidden md:block" target="_blank" rel="noreferrer">
             <Button size="sm">{m.common.contactTelegram}</Button>

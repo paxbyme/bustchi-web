@@ -21,12 +21,14 @@ export function createPageMetadata({
       url,
       siteName: siteConfig.name,
       type: 'website',
-      locale: 'uz_UZ'
+      locale: 'uz_UZ',
+      images: [{ url: '/icon-512.png', width: 512, height: 512, alt: siteConfig.name }]
     },
     twitter: {
       card: 'summary_large_image',
       title,
-      description
+      description,
+      images: ['/icon-512.png']
     },
     alternates: {
       canonical: url
