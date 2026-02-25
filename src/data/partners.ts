@@ -10,6 +10,7 @@ export interface Partner {
 }
 
 export const partners: Partner[] = [
+  { id: 'puremilky', name: 'Puremilky', title: 'Dairy products company', category: 'Business', image: 'puremilky.jpg' },
   { id: 'anvarov-jasurbek', name: 'Anvarov Jasurbek', title: 'Telegram blog expert', category: 'Expert', image: 'anvarov-jasurbek.jpg', telegram: 'https://t.me/anvarovsblog' },
   { id: 'ustoz-zakkariya', name: 'Ustoz Zakkariya', title: 'Arab tili', category: 'Expert', image: 'ustoz-zakkariya.jpg', telegram: 'https://t.me/ustoz_zakariyya' },
   { id: 'yuksalish-group', name: 'Yuksalish Group', title: 'Construction company', category: 'Business', image: 'yuksalish-group.jpg', telegram: 'https://t.me/yuksalish_group_samarqand' },
@@ -30,7 +31,6 @@ export const partners: Partner[] = [
   { id: 'muhriddin-xojayev', name: 'Muhriddin Xojayev', title: 'IELTS instructor', category: 'Expert', image: 'muhriddin-xojayev.jpg', telegram: 'https://t.me/xojaevs' },
   { id: 'muxtasar-english', name: 'Muxtasar English', title: 'IELTS instructor', category: 'Academy', image: 'muxtasar-english.jpg', telegram: 'https://t.me/muxtasar_english' },
   { id: 'alisher-abduvohobov', name: 'Alisher Abduvohobov', title: 'IELTS instructor', category: 'Expert', image: 'alisher-abduvohobov.jpg', telegram: 'https://t.me/+D6FbPPCZujo1OTcy' },
-  { id: 'puremilky', name: 'Puremilky', title: 'Dairy products company', category: 'Business', image: 'puremilky.jpg' },
 ];
 
 export const partnerCategories: Array<PartnerCategory | 'All'> = ['All', 'Expert', 'Academy', 'Business', 'Travel'];
