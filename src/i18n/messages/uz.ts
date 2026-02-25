@@ -17,7 +17,6 @@ export const uzMessages: Messages = {
     partners: 'Hamkorlar',
     pricing: 'Narxlar',
     about: 'Biz haqimizda',
-    contact: 'Aloqa',
     faq: 'FAQ',
   },
   theme: {
@@ -195,55 +194,6 @@ export const uzMessages: Messages = {
       },
     },
   },
-  contact: {
-    badge: 'Aloqa',
-    introTitle: 'Bustchi bilan bog\'lanish',
-    introDescription:
-      'Forma orqali so\'rov yuboring yoki to\'g\'ridan-to\'g\'ri Telegramga yozing. Maqsadimiz: tez javob, aniq narx va tushunarli jarayon.',
-    form: {
-      nameLabel: 'Ism',
-      namePlaceholder: 'Ismingiz',
-      phoneLabel: 'Telefon',
-      phonePlaceholder: '+998 ...',
-      telegramLabel: 'Telegram username',
-      telegramPlaceholder: '@username (ixtiyoriy)',
-      messageLabel: 'Xabar',
-      messagePlaceholder: 'Nima xizmat kerakligi va maqsadingizni yozing...',
-      submitButton: 'Xabar yuborish',
-      submittingButton: 'Yuborilmoqda...',
-      altCta: 'Telegram orqali bog\'lanish',
-    },
-    success: {
-      title: 'Xabaringiz qabul qilindi',
-      description:
-        'Tez orada javob beramiz. Tezroq aloqa uchun Telegram CTA tugmasidan foydalanishingiz mumkin.',
-      requestIdLabel: 'So\'rov ID:',
-      writeViaTelegram: 'Telegram orqali yozish',
-      sendNewMessage: 'Yangi xabar yuborish',
-    },
-    points: {
-      telegram: {
-        title: 'Telegram - asosiy kanal',
-        description:
-          'Eng tezkor aloqa uchun Telegram CTA tugmalaridan foydalaning.',
-      },
-      consultation: {
-        title: 'Savol va konsultatsiya',
-        description:
-          'Qaysi xizmat mosligini bilmasangiz, maqsadingizni yozing - tavsiya beramiz.',
-      },
-      transparent: {
-        title: 'Shaffof jarayon',
-        description:
-          'Narx, timing va jarayon bosqichlari oldindan kelishiladi.',
-      },
-    },
-    quickCta: {
-      title: 'Tezkor CTA',
-      description:
-        'Agar buyurtma tafsilotlari tayyor bo\'lsa, narx kalkulyatoridan xabar yaratib Telegramga yuboring.',
-    },
-  },
   faq: {
     badge: 'FAQ',
     introTitle: 'Ko\'p beriladigan savollar',
@@ -304,30 +254,6 @@ export const uzMessages: Messages = {
     responseTime: 'Javob berish vaqti: 09:00 - 22:00',
     copyright: 'Bustchi. Barcha huquqlar himoyalangan.',
   },
-  validation: {
-    nameMin: 'Ism kamida 2 ta harf bo\'lishi kerak',
-    nameMax: 'Ism juda uzun',
-    phoneMin: 'Telefon raqam kiriting',
-    phoneMax: 'Telefon raqam juda uzun',
-    phoneFormat: 'Telefon raqam formati noto\'g\'ri',
-    telegramMax: 'Telegram username juda uzun',
-    telegramFormat: 'Telegram username noto\'g\'ri',
-    messageMin: 'Xabar kamida 10 ta belgidan iborat bo\'lsin',
-    messageMax: 'Xabar juda uzun',
-  },
-  errors: {
-    submitFailed:
-      'Xabar yuborishda xatolik yuz berdi. Qayta urinib ko\'ring.',
-    networkError:
-      'Tarmoq xatosi. Internetni tekshirib, qayta urinib ko\'ring.',
-    tooManyRequests:
-      'Juda ko\'p urinish bo\'ldi. Iltimos, birozdan keyin qayta urinib ko\'ring.',
-    invalidJson: 'Yuborilgan ma\'lumot JSON formatida emas.',
-    formErrors: 'Forma ma\'lumotlarida xatolik bor.',
-    tooFast: 'Forma juda tez yuborildi. Iltimos, qayta urinib ko\'ring.',
-    deliveryFailed:
-      'Xabar yuborilmadi. Hozircha Telegram orqali bog\'laning yoki birozdan keyin qayta urinib ko\'ring.',
-  },
   meta: {
     defaultTitle: 'Bustchi | Telegram BOOST xizmati',
     defaultDescription:
@@ -347,9 +273,6 @@ export const uzMessages: Messages = {
     aboutTitle: 'Biz haqimizda',
     aboutDescription:
       'Bustchi missiyasi, positioning va Telegram BOOST xizmati bo\'yicha yondashuvi.',
-    contactTitle: 'Aloqa',
-    contactDescription:
-      'Bustchi bilan bog\'lanish uchun forma va Telegram CTA.',
     faqTitle: 'FAQ',
     faqDescription:
       'Bustchi xizmatlari bo\'yicha ko\'p beriladigan savollar: xavfsizlik, timing, natija va narxlar.',

@@ -8,7 +8,6 @@ const staticRoutes = [
   '/pricing',
   '/partners',
   '/faq',
-  '/contact',
   '/terms'
 ] as const;
 
@@ -19,6 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: new URL(route, siteConfig.url).toString(),
     lastModified,
     changeFrequency: route === '/' ? 'weekly' : 'monthly',
-    priority: route === '/' ? 1 : route === '/contact' ? 0.9 : 0.7
+    priority: route === '/' ? 1 : 0.7
   }));
 }

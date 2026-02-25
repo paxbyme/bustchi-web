@@ -43,35 +43,57 @@ export function PartnerCard({ partner }: PartnerCardProps) {
   const initials = getInitials(partner.name);
   const imagePath = partner.image ? `/partners/${partner.image}` : null;
 
-  return (
-    <Card className="group h-full rounded-2xl bg-card/70 p-4 transition hover:-translate-y-1 hover:shadow-lift">
-      <div className="flex items-start gap-3">
-        {imagePath ? (
-          <Image
-            src={imagePath}
-            alt={partner.name}
-            width={52}
-            height={52}
-            className="h-[52px] w-[52px] rounded-xl object-cover"
-          />
-        ) : (
-          <div
-            className={`flex h-[52px] w-[52px] items-center justify-center rounded-xl bg-gradient-to-br ${gradientById(
-              partner.id
-            )} text-sm font-bold text-white shadow-soft`}
-            aria-hidden="true"
-          >
-            {initials}
-          </div>
-        )}
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold text-foreground">{partner.name}</p>
-          <p className="mt-1 text-xs text-muted-foreground">{partner.title}</p>
-          <p className="mt-2 inline-flex rounded-full bg-muted px-2 py-1 text-[11px] text-muted-foreground">
-            {categoryLabels[partner.category]}
-          </p>
+  const inner = (
+    <div className="flex items-start gap-3">
+      {imagePath ? (
+        <Image
+          src={imagePath}
+          alt={partner.name}
+          width={52}
+          height={52}
+          className="h-[52px] w-[52px] rounded-xl object-cover"
+        />
+      ) : (
+        <div
+          className={`flex h-[52px] w-[52px] items-center justify-center rounded-xl bg-gradient-to-br ${gradientById(
+            partner.id
+          )} text-sm font-bold text-white shadow-soft`}
+          aria-hidden="true"
+        >
+          {initials}
         </div>
+      )}
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-semibold text-foreground">{partner.name}</p>
+        <p className="mt-1 text-xs text-muted-foreground">{partner.title}</p>
+        <p className="mt-2 inline-flex rounded-full bg-muted px-2 py-1 text-[11px] text-muted-foreground">
+          {categoryLabels[partner.category]}
+        </p>
       </div>
+    </div>
+  );
+
+  const cardClasses = "group h-full rounded-2xl bg-card/70 p-4 transition hover:-translate-y-1 hover:shadow-lift";
+
+  if (partner.telegram) {
+    return (
+      <a
+        href={partner.telegram}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${partner.name} Telegram`}
+        className="block no-underline text-inherit"
+      >
+        <Card className={cardClasses}>
+          {inner}
+        </Card>
+      </a>
+    );
+  }
+
+  return (
+    <Card className={cardClasses}>
+      {inner}
     </Card>
   );
 }

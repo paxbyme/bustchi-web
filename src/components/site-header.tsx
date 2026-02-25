@@ -23,7 +23,6 @@ export function SiteHeader() {
       { href: '/partners', label: m.nav.partners },
       { href: '/pricing', label: m.nav.pricing },
       { href: '/about', label: m.nav.about },
-      { href: '/contact', label: m.nav.contact },
       { href: '/faq', label: m.nav.faq }
     ],
     [m]

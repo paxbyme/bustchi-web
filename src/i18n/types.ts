@@ -15,7 +15,6 @@ export interface Messages {
     partners: string;
     pricing: string;
     about: string;
-    contact: string;
     faq: string;
   };
   theme: {
@@ -120,40 +119,6 @@ export interface Messages {
       execution: { title: string; description: string };
     };
   };
-  contact: {
-    badge: string;
-    introTitle: string;
-    introDescription: string;
-    form: {
-      nameLabel: string;
-      namePlaceholder: string;
-      phoneLabel: string;
-      phonePlaceholder: string;
-      telegramLabel: string;
-      telegramPlaceholder: string;
-      messageLabel: string;
-      messagePlaceholder: string;
-      submitButton: string;
-      submittingButton: string;
-      altCta: string;
-    };
-    success: {
-      title: string;
-      description: string;
-      requestIdLabel: string;
-      writeViaTelegram: string;
-      sendNewMessage: string;
-    };
-    points: {
-      telegram: { title: string; description: string };
-      consultation: { title: string; description: string };
-      transparent: { title: string; description: string };
-    };
-    quickCta: {
-      title: string;
-      description: string;
-    };
-  };
   faq: {
     badge: string;
     introTitle: string;
@@ -189,26 +154,6 @@ export interface Messages {
     responseTime: string;
     copyright: string;
   };
-  validation: {
-    nameMin: string;
-    nameMax: string;
-    phoneMin: string;
-    phoneMax: string;
-    phoneFormat: string;
-    telegramMax: string;
-    telegramFormat: string;
-    messageMin: string;
-    messageMax: string;
-  };
-  errors: {
-    submitFailed: string;
-    networkError: string;
-    tooManyRequests: string;
-    invalidJson: string;
-    formErrors: string;
-    tooFast: string;
-    deliveryFailed: string;
-  };
   meta: {
     defaultTitle: string;
     defaultDescription: string;
@@ -222,8 +167,6 @@ export interface Messages {
     pricingDescription: string;
     aboutTitle: string;
     aboutDescription: string;
-    contactTitle: string;
-    contactDescription: string;
     faqTitle: string;
     faqDescription: string;
     termsTitle: string;
