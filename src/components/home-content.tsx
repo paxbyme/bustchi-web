@@ -35,15 +35,6 @@ export function HomeContent() {
                 {m.home.heroDescription}
               </p>
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-              <CTAButton size="lg" label={m.home.heroCta} />
-              <Link href="/pricing">
-                <Button variant="outline" size="lg">
-                  {m.home.heroPricingButton}
-                  <ArrowRight className="size-4" />
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
