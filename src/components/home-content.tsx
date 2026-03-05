@@ -129,12 +129,7 @@ export function HomeContent() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-                <Link href="/pricing">
-                  <Button size="lg" className="w-full">
-                    {m.home.ctaCalculatorButton}
-                  </Button>
-                </Link>
-                <CTAButton variant="outline" size="lg" className="w-full" />
+                <CTAButton size="lg" className="w-full" />
               </div>
             </div>
           </div>

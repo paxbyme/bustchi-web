@@ -13,7 +13,6 @@ export function SiteFooter() {
     () => [
       { href: '/services', label: m.footer.links.services },
       { href: '/partners', label: m.footer.links.partners },
-      { href: '/pricing', label: m.footer.links.pricing },
       { href: '/faq', label: m.footer.links.faq },
       { href: '/terms', label: m.footer.links.terms }
     ],

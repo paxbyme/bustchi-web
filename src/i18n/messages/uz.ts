@@ -15,7 +15,6 @@ export const uzMessages: Messages = {
     home: 'Bosh sahifa',
     services: 'Xizmatlar',
     partners: 'Hamkorlar',
-    pricing: 'Narxlar',
     about: 'Biz haqimizda',
     faq: 'FAQ',
   },
@@ -28,7 +27,6 @@ export const uzMessages: Messages = {
     heroDescription:
       'Bustchi ekspertlar, bizneslar va akademiyalar uchun Telegram reach va ishonchni kuchaytiradigan BOOST xizmatlarini taklif qiladi. Narxlar shaffof, jarayon aniq, CTA esa to\'g\'ridan-to\'g\'ri Telegramga olib boradi.',
     heroCta: 'Telegram orqali bog\'lanish',
-    heroPricingButton: 'Narx kalkulyatori',
     benefitsBadge: 'Afzalliklar',
     benefitsTitle: 'Ishonch, tezlik va shaffoflikka qurilgan jarayon',
     benefitsDescription:
@@ -89,7 +87,6 @@ export const uzMessages: Messages = {
       'Narxni oldindan hisoblang va Telegramda bir xabar bilan buyurtma bering',
     ctaDescription:
       'Kalkulyator barcha paketlar uchun konfiguratsiya asosida hisoblaydi. Bu sizga aniq budjet va tez tasdiqlash imkonini beradi.',
-    ctaCalculatorButton: 'Kalkulyatorni ochish',
   },
   services: {
     badge: 'Xizmatlar',
@@ -124,34 +121,6 @@ export const uzMessages: Messages = {
     helpTitle: 'Nima bilan yordam beramiz?',
     helpDescription:
       'Agar qaysi BOOST paketi sizga mosligini bilmasangiz, Telegram orqali maqsadingizni yozing: kanal turi, auditoriya holati va kampaniya maqsadi. Bustchi sizga mos paket va quantity bo\'yicha tavsiya beradi.',
-  },
-  pricing: {
-    badge: 'Narxlar',
-    introTitle: 'Boost narx kalkulyatori va muddatlar',
-    introDescription:
-      'Narxlar konfiguratsiya dagi BOOST jadvalidan olinadi. Muddatni tanlang, sonni kiriting va jami narxni darhol ko\'ring.',
-    calculatorSubtitle: 'Boost narx kalkulyatori',
-    calculatorTitle: 'Boost kalkulyator',
-    durationLabel: 'Muddat',
-    quantityLabel: 'Miqdor',
-    totalFormula: 'Jami = miqdor \u00d7 dona narxi',
-    quantityError: 'Miqdor kamida 1 bo\'lgan butun son bo\'lishi kerak.',
-    priceTableTitle: 'Muddat bo\'yicha narx jadvali',
-    outputLabel: 'Natija',
-    breakdownTitle: 'Tafsilot',
-    unitPriceLabel: 'Dona narxi:',
-    quantityValueLabel: 'Miqdor:',
-    totalLabel: 'Jami:',
-    contactViaTelegram: 'Telegram orqali bog\'lanish',
-    prefillNote:
-      'Tayyor xabarda muddat, miqdor, dona narxi va jami summa ko\'rsatiladi.',
-    configBadge: 'Konfiguratsiya asosida',
-    configTitle: 'BOOST narx jadvali',
-    configDescription:
-      'Quyidagi qiymatlar kalkulyator ishlatadigan bir xil boostPricing konfiguratsiyasidan render qilinadi.',
-    durationCardLabel: 'Muddat',
-    unitPriceCardLabel: 'Dona narxi',
-    perBoostUnit: '1 boost birlik uchun',
   },
   partners: {
     badge: 'Hamkorlar',
@@ -245,7 +214,6 @@ export const uzMessages: Messages = {
     links: {
       services: 'Xizmatlar',
       partners: 'Hamkorlar',
-      pricing: 'Narxlar',
       faq: 'FAQ',
       terms: 'Shartlar',
     },
@@ -267,9 +235,6 @@ export const uzMessages: Messages = {
     partnersTitle: 'Hamkorlar',
     partnersDescription:
       'Bustchi bilan ishlagan 50+ ekspert, akademiya va brendlar ro\'yxati.',
-    pricingTitle: 'Narxlar',
-    pricingDescription:
-      'Bustchi Telegram BOOST xizmati uchun konfiguratsiya asosidagi narx kalkulyatori.',
     aboutTitle: 'Biz haqimizda',
     aboutDescription:
       'Bustchi missiyasi, positioning va Telegram BOOST xizmati bo\'yicha yondashuvi.',
@@ -278,13 +243,5 @@ export const uzMessages: Messages = {
       'Bustchi xizmatlari bo\'yicha ko\'p beriladigan savollar: xavfsizlik, timing, natija va narxlar.',
     termsTitle: 'Shartlar',
     termsDescription: 'Bustchi terms sahifasi uchun placeholder.',
-  },
-  telegram: {
-    greeting: 'Assalomu alaykum, Bustchi! Men BOOST tanladim.',
-    durationLabel: 'Muddat',
-    quantityLabel: 'Soni',
-    unitPriceLabel: 'Donasi',
-    totalLabel: 'Jami',
-    orderConfirm: 'Buyurtma beraman.',
   },
 };

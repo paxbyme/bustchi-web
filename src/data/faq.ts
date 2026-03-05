@@ -21,7 +21,7 @@ export const faqItems: FAQItem[] = [
     id: 'pricing',
     question: 'Narxlar qanday hisoblanadi?',
     answer:
-      'Narxlar `src/config/pricing.ts` konfiguratsiyasidan olinadi. Paket bazaviy narxi quantity ga ko\'paytiriladi va bulk chegirma qo\'llanishi mumkin.'
+      'Narxlar paket bazaviy narxiga asoslanadi. Paket bazaviy narxi quantity ga ko\'paytiriladi va bulk chegirma qo\'llanishi mumkin.'
   },
   {
     id: 'support',

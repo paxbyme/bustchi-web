@@ -13,7 +13,6 @@ export interface Messages {
     home: string;
     services: string;
     partners: string;
-    pricing: string;
     about: string;
     faq: string;
   };
@@ -25,7 +24,6 @@ export interface Messages {
     heroTitle: string;
     heroDescription: string;
     heroCta: string;
-    heroPricingButton: string;
     benefitsBadge: string;
     benefitsTitle: string;
     benefitsDescription: string;
@@ -50,7 +48,6 @@ export interface Messages {
     ctaLabel: string;
     ctaTitle: string;
     ctaDescription: string;
-    ctaCalculatorButton: string;
   };
   services: {
     badge: string;
@@ -68,31 +65,6 @@ export interface Messages {
     };
     helpTitle: string;
     helpDescription: string;
-  };
-  pricing: {
-    badge: string;
-    introTitle: string;
-    introDescription: string;
-    calculatorSubtitle: string;
-    calculatorTitle: string;
-    durationLabel: string;
-    quantityLabel: string;
-    totalFormula: string;
-    quantityError: string;
-    priceTableTitle: string;
-    outputLabel: string;
-    breakdownTitle: string;
-    unitPriceLabel: string;
-    quantityValueLabel: string;
-    totalLabel: string;
-    contactViaTelegram: string;
-    prefillNote: string;
-    configBadge: string;
-    configTitle: string;
-    configDescription: string;
-    durationCardLabel: string;
-    unitPriceCardLabel: string;
-    perBoostUnit: string;
   };
   partners: {
     badge: string;
@@ -145,7 +117,6 @@ export interface Messages {
     links: {
       services: string;
       partners: string;
-      pricing: string;
       faq: string;
       terms: string;
     };
@@ -163,21 +134,11 @@ export interface Messages {
     servicesDescription: string;
     partnersTitle: string;
     partnersDescription: string;
-    pricingTitle: string;
-    pricingDescription: string;
     aboutTitle: string;
     aboutDescription: string;
     faqTitle: string;
     faqDescription: string;
     termsTitle: string;
     termsDescription: string;
-  };
-  telegram: {
-    greeting: string;
-    durationLabel: string;
-    quantityLabel: string;
-    unitPriceLabel: string;
-    totalLabel: string;
-    orderConfirm: string;
   };
 }
