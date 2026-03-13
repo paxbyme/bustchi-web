@@ -10,6 +10,7 @@ export interface Partner {
 }
 
 export const partners: Partner[] = [
+  { id: 'ikrom-sharif', name: 'Ikrom Sharif', title: 'Farog\'at qasri" kursi muallifi', category: 'Expert', image: 'ikrom-sharif.jpg', telegram: 'https://t.me/ikromsharif' },
   { id: 'zarina-ismoilovna', name: 'Zarina Ismoilovna', title: 'Rus tili Expert', category: 'Expert', image: 'zarina-ismoilovna.jpg', telegram: 'https://t.me/zarinaismailovna' },
   { id: 'puremilky', name: 'Puremilky', title: 'Dairy products company', category: 'Business', image: 'puremilky.jpg', telegram: 'https://t.me/PureMilky_Official' },
   { id: 'anvarov-jasurbek', name: 'Anvarov Jasurbek', title: 'Telegram blog expert', category: 'Expert', image: 'anvarov-jasurbek.jpg', telegram: 'https://t.me/anvarovsblog' },
