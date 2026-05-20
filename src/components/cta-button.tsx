@@ -32,10 +32,19 @@ export function CTAButton({
       href={buildTelegramLink(message)}
       target="_blank"
       rel="noreferrer"
-      className={cn(buttonVariants({ variant, size }), fullWidth && 'w-full', className)}
+      className={cn(
+        buttonVariants({ variant, size }),
+        'group relative overflow-hidden',
+        fullWidth && 'w-full',
+        className
+      )}
     >
-      <Send className="size-4" />
+      <Send className="size-4 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:rotate-12" />
       {effectiveLabel}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+      />
     </Link>
   );
 }

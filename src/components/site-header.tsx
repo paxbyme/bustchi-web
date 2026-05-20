@@ -33,10 +33,20 @@ export function SiteHeader() {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/75 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/75 backdrop-blur-xl motion-safe:animate-slide-down">
       <div className="container flex h-16 items-center justify-between gap-3">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <Image src="/logo.png" alt="Bustchi" width={36} height={36} className="size-9" />
+        <Link
+          href="/"
+          className="group flex items-center gap-2 transition"
+          onClick={() => setOpen(false)}
+        >
+          <Image
+            src="/logo.png"
+            alt="Bustchi"
+            width={36}
+            height={36}
+            className="size-9 transition-transform duration-500 ease-out group-hover:rotate-6 group-hover:scale-110"
+          />
           <div>
             <p className="font-display text-base font-semibold leading-none">{m.common.brand}</p>
             <p className="text-xs text-muted-foreground">{m.common.telegramGrowth}</p>
@@ -48,8 +58,9 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
+              data-active={isActive(item.href)}
               className={cn(
-                'rounded-lg px-3 py-2 text-sm transition hover:bg-muted',
+                'nav-underline rounded-lg px-3 py-2 text-sm transition-colors duration-200 hover:text-foreground',
                 isActive(item.href) ? 'text-foreground' : 'text-muted-foreground'
               )}
             >
@@ -61,31 +72,59 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <Link href={buildTelegramLink()} className="hidden md:block" target="_blank" rel="noreferrer">
-            <Button size="sm">{m.common.contactTelegram}</Button>
+            <Button size="sm" className="motion-safe:animate-pulse-glow">
+              {m.common.contactTelegram}
+            </Button>
           </Link>
-          <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setOpen((v) => !v)}>
-            {open ? <X className="size-4" /> : <Menu className="size-4" />}
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+          >
+            <span className="relative inline-flex size-4 items-center justify-center">
+              <Menu
+                className={cn(
+                  'absolute size-4 transition-all duration-300',
+                  open ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'
+                )}
+              />
+              <X
+                className={cn(
+                  'absolute size-4 transition-all duration-300',
+                  open ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'
+                )}
+              />
+            </span>
           </Button>
         </div>
       </div>
 
       {open && (
-        <div className="border-t border-border/60 bg-background/95 md:hidden">
+        <div className="border-t border-border/60 bg-background/95 md:hidden motion-safe:animate-slide-down">
           <div className="container space-y-1 py-3">
-            {navItems.map((item) => (
+            {navItems.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
+                style={{ animationDelay: `${i * 40}ms` }}
                 className={cn(
-                  'block rounded-lg px-3 py-2 text-sm',
-                  isActive(item.href) ? 'bg-muted text-foreground' : 'text-muted-foreground'
+                  'block rounded-lg px-3 py-2 text-sm transition-colors motion-safe:animate-fade-up',
+                  isActive(item.href) ? 'bg-muted text-foreground' : 'text-muted-foreground hover:bg-muted/60'
                 )}
               >
                 {item.label}
               </Link>
             ))}
-            <Link href={buildTelegramLink()} onClick={() => setOpen(false)} target="_blank" rel="noreferrer" className="block pt-2">
+            <Link
+              href={buildTelegramLink()}
+              onClick={() => setOpen(false)}
+              target="_blank"
+              rel="noreferrer"
+              className="block pt-2"
+            >
               <Button className="w-full">{m.common.contactTelegram}</Button>
             </Link>
           </div>

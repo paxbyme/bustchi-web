@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { partnerCategories, partners, type PartnerCategory } from '@/data/partners';
 import { PartnerCard } from '@/components/partner-card';
+import { Reveal } from '@/components/motion/reveal';
 import { cn } from '@/lib/utils';
 import { useMessages } from '@/i18n/context';
 
@@ -32,26 +33,39 @@ export function PartnersGrid({ previewCount, showFilters = false }: PartnersGrid
   return (
     <div className="space-y-5">
       {showFilters ? (
-        <div className="flex flex-wrap gap-2">
-          {partnerCategories.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => setCategory(item)}
-              className={cn(
-                'rounded-full border px-3 py-1.5 text-sm transition',
-                category === item ? 'border-primary/30 bg-primary/10 text-primary' : 'border-border bg-card hover:bg-muted'
-              )}
-            >
-              {categoryLabels[item]}
-            </button>
-          ))}
-        </div>
+        <Reveal>
+          <div className="flex flex-wrap gap-2">
+            {partnerCategories.map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => setCategory(item)}
+                className={cn(
+                  'rounded-full border px-3 py-1.5 text-sm transition-all duration-200 active:scale-95',
+                  category === item
+                    ? 'border-primary/30 bg-primary/10 text-primary shadow-soft'
+                    : 'border-border bg-card hover:-translate-y-0.5 hover:border-primary/30 hover:bg-muted'
+                )}
+              >
+                {categoryLabels[item]}
+              </button>
+            ))}
+          </div>
+        </Reveal>
       ) : null}
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {filtered.map((partner) => (
-          <PartnerCard key={partner.id} partner={partner} />
+      <div
+        key={category}
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        {filtered.map((partner, i) => (
+          <Reveal
+            key={`${category}-${partner.id}`}
+            delay={Math.min(i * 50, 600)}
+            className="h-full"
+          >
+            <PartnerCard partner={partner} />
+          </Reveal>
         ))}
       </div>
     </div>

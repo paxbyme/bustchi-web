@@ -6,6 +6,7 @@ import { PageIntro } from '@/components/page-intro';
 import { ServiceCard } from '@/components/service-card';
 import { CTAButton } from '@/components/cta-button';
 import { Card } from '@/components/ui/card';
+import { Reveal } from '@/components/motion/reveal';
 import type { ServiceItem } from '@/data/services';
 
 export function ServicesContent() {
@@ -30,20 +31,24 @@ export function ServicesContent() {
       />
       <section className="section-pad pt-0">
         <div className="container grid gap-5">
-          <ServiceCard service={boostService} />
+          <Reveal>
+            <ServiceCard service={boostService} />
+          </Reveal>
         </div>
       </section>
       <section className="section-pad pt-0">
         <div className="container">
-          <Card className="rounded-2xl bg-card/70 p-6 md:p-8">
-            <h2 className="font-display text-2xl font-semibold">{m.services.helpTitle}</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base">
-              {m.services.helpDescription}
-            </p>
-            <div className="mt-5">
-              <CTAButton size="lg" />
-            </div>
-          </Card>
+          <Reveal>
+            <Card className="ring-shine relative overflow-hidden rounded-2xl bg-card/70 p-6 md:p-8">
+              <h2 className="font-display text-2xl font-semibold">{m.services.helpTitle}</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base">
+                {m.services.helpDescription}
+              </p>
+              <div className="mt-5">
+                <CTAButton size="lg" className="motion-safe:animate-pulse-glow" />
+              </div>
+            </Card>
+          </Reveal>
         </div>
       </section>
     </>

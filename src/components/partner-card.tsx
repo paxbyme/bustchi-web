@@ -44,36 +44,56 @@ export function PartnerCard({ partner }: PartnerCardProps) {
   const imagePath = partner.image ? `/partners/${partner.image}` : null;
 
   const inner = (
-    <div className="flex items-start gap-3">
+    <div className="relative flex items-start gap-3">
       {imagePath ? (
-        <Image
-          src={imagePath}
-          alt={partner.name}
-          width={52}
-          height={52}
-          className="h-[52px] w-[52px] rounded-xl object-cover"
-        />
+        <div className="relative">
+          <Image
+            src={imagePath}
+            alt={partner.name}
+            width={52}
+            height={52}
+            className="h-[52px] w-[52px] rounded-xl object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-xl opacity-0 ring-2 ring-primary/40 transition duration-500 group-hover:opacity-100"
+          />
+        </div>
       ) : (
         <div
           className={`flex h-[52px] w-[52px] items-center justify-center rounded-xl bg-gradient-to-br ${gradientById(
             partner.id
-          )} text-sm font-bold text-white shadow-soft`}
+          )} text-sm font-bold text-white shadow-soft transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-3`}
           aria-hidden="true"
         >
           {initials}
         </div>
       )}
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-semibold text-foreground">{partner.name}</p>
+        <p className="truncate text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+          {partner.name}
+        </p>
         <p className="mt-1 text-xs text-muted-foreground">{partner.title}</p>
-        <p className="mt-2 inline-flex rounded-full bg-muted px-2 py-1 text-[11px] text-muted-foreground">
+        <p className="mt-2 inline-flex rounded-full bg-muted px-2 py-1 text-[11px] text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary">
           {categoryLabels[partner.category]}
         </p>
       </div>
     </div>
   );
 
-  const cardClasses = "group h-full rounded-2xl bg-card/70 p-4 transition hover:-translate-y-1 hover:shadow-lift";
+  const cardClasses =
+    'group hover-lift relative h-full overflow-hidden rounded-2xl bg-card/70 p-4';
+
+  const glow = (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-500 group-hover:opacity-100"
+      style={{
+        background:
+          'radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.18), transparent 60%)'
+      }}
+    />
+  );
 
   if (partner.telegram) {
     return (
@@ -85,6 +105,7 @@ export function PartnerCard({ partner }: PartnerCardProps) {
         className="block no-underline text-inherit"
       >
         <Card className={cardClasses}>
+          {glow}
           {inner}
         </Card>
       </a>
@@ -93,6 +114,7 @@ export function PartnerCard({ partner }: PartnerCardProps) {
 
   return (
     <Card className={cardClasses}>
+      {glow}
       {inner}
     </Card>
   );
