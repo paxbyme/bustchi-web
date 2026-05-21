@@ -12,6 +12,7 @@ export interface Partner {
 export const partners: Partner[] = [
   { id: 'cambridge-lc', name: 'Cambridge LC', title: 'English language center', category: 'Academy', image: 'cambridge-lc.jpg', telegram: 'https://t.me/cambridge_learning_center' },
   { id: 'husan-mamasaidov', name: 'Husan Mamasaidov', title: 'Business expert', category: 'Expert', image: 'husan-mamasaidov.jpg', telegram: 'https://t.me/husanmamasaidov_vaqtvapulilmi' },
+  { id: 'asror-iskandarov', name: 'Asror Iskandarov', title: 'Personal growth coach', category: 'Expert', image: 'asror-iskandarov.jpg', telegram: 'https://t.me/asroriskandarovshb' },
   { id: 'ikrom-sharif', name: 'Ikrom Sharif', title: 'Farog\'at qasri" kursi muallifi', category: 'Expert', image: 'ikrom-sharif.jpg', telegram: 'https://t.me/ikromsharif' },
   { id: 'safar-travel', name: 'Safar Travel', title: 'Travel agency', category: 'Travel', image: 'safar-travel.jpg', telegram: 'https://t.me/safartraveluz' },
   { id: 'puremilky', name: 'Puremilky', title: 'Dairy products company', category: 'Business', image: 'puremilky.jpg', telegram: 'https://t.me/PureMilky_Official' },
