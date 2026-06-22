@@ -10,9 +10,10 @@ import { useMessages } from '@/i18n/context';
 interface PartnersGridProps {
   previewCount?: number;
   showFilters?: boolean;
+  marquee?: boolean;
 }
 
-export function PartnersGrid({ previewCount, showFilters = false }: PartnersGridProps) {
+export function PartnersGrid({ previewCount, showFilters = false, marquee = false }: PartnersGridProps) {
   const m = useMessages();
 
   const categoryLabels: Record<PartnerCategory | 'All', string> = {
@@ -29,6 +30,22 @@ export function PartnersGrid({ previewCount, showFilters = false }: PartnersGrid
     const base = category === 'All' ? partners : partners.filter((partner) => partner.category === category);
     return typeof previewCount === 'number' ? base.slice(0, previewCount) : base;
   }, [category, previewCount]);
+
+  if (marquee) {
+    return (
+      <div
+        className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+      >
+        <div className="flex w-max gap-4 animate-marquee group-hover:[animation-play-state:paused]">
+          {[...filtered, ...filtered].map((partner, i) => (
+            <div key={`${partner.id}-${i}`} className="w-[280px] shrink-0">
+              <PartnerCard partner={partner} />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-5">

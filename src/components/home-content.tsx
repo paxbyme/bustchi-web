@@ -158,7 +158,7 @@ export function HomeContent() {
               </Link>
             </div>
           </Reveal>
-          <PartnersGrid previewCount={8} />
+          <PartnersGrid previewCount={8} marquee />
         </div>
       </section>
 
