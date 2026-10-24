@@ -21,7 +21,8 @@ export function PartnersGrid({ previewCount, showFilters = false, marquee = fals
     Expert: m.partners.categories.expert,
     Academy: m.partners.categories.academy,
     Business: m.partners.categories.business,
-    Travel: m.partners.categories.travel
+    Travel: m.partners.categories.travel,
+    Education: m.partners.categories.education
   };
 
   const [category, setCategory] = useState<PartnerCategory | 'All'>('All');

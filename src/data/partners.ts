@@ -1,4 +1,4 @@
-export type PartnerCategory = 'Expert' | 'Academy' | 'Business' | 'Travel';
+export type PartnerCategory = 'Expert' | 'Academy' | 'Business' | 'Travel' | 'Education';
 
 export interface Partner {
   id: string;
@@ -11,6 +11,7 @@ export interface Partner {
 
 export const partners: Partner[] = [
   { id: 'cambridge-lc', name: 'Cambridge LC', title: 'English language center', category: 'Academy', image: 'cambridge-lc.jpg', telegram: 'https://t.me/cambridge_learning_center' },
+  { id: 'toshkent-amaliy-fanlar-universiteti', name: 'Toshkent amaliy fanlar universiteti', title: 'Universitet', category: 'Education', image: 'toshkent-amaliy-fanlar-universiteti.png', telegram: 'https://t.me/utasuz' },
   { id: 'husan-mamasaidov', name: 'Husan Mamasaidov', title: 'Business expert', category: 'Expert', image: 'husan-mamasaidov.jpg', telegram: 'https://t.me/husanmamasaidov_vaqtvapulilmi' },
   { id: 'asror-iskandarov', name: 'Asror Iskandarov', title: 'Personal growth coach', category: 'Expert', image: 'asror-iskandarov.jpg', telegram: 'https://t.me/asroriskandarovshb' },
   { id: 'ikrom-sharif', name: 'Ikrom Sharif', title: 'Farog\'at qasri" kursi muallifi', category: 'Expert', image: 'ikrom-sharif.jpg', telegram: 'https://t.me/ikromsharif' },
@@ -38,4 +39,11 @@ export const partners: Partner[] = [
   { id: 'iroda-rahmonova', name: 'Iroda Rahmonova', title: 'Tajwid expert', category: 'Expert', image: 'iroda-rahmonova.jpg', telegram: 'https://t.me/attilmiiz_onlineschool' },
 ];
 
-export const partnerCategories: Array<PartnerCategory | 'All'> = ['All', 'Expert', 'Academy', 'Business', 'Travel'];
+export const partnerCategories: Array<PartnerCategory | 'All'> = [
+  'All',
+  'Expert',
+  'Academy',
+  'Education',
+  'Business',
+  'Travel'
+];

@@ -133,6 +133,7 @@ export const uzMessages: Messages = {
       academy: 'Akademiya',
       business: 'Biznes',
       travel: 'Sayohat',
+      education: "Ta'lim",
     },
   },
   about: {
