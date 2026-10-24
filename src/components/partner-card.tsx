@@ -37,7 +37,8 @@ export function PartnerCard({ partner }: PartnerCardProps) {
     Expert: m.partners.categories.expert,
     Academy: m.partners.categories.academy,
     Business: m.partners.categories.business,
-    Travel: m.partners.categories.travel
+    Travel: m.partners.categories.travel,
+    Education: m.partners.categories.education
   };
 
   const initials = getInitials(partner.name);

@@ -76,6 +76,7 @@ export interface Messages {
       academy: string;
       business: string;
       travel: string;
+      education: string;
     };
   };
   about: {
